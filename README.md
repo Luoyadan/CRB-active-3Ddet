@@ -65,7 +65,7 @@ Currently we provide the dataloader of KITTI dataset and NuScenes dataset, and t
 * NOTE: if you already have the data infos from `pcdet v0.1`, you can choose to use the old infos and set the DATABASE_WITH_FAKELIDAR option in tools/cfgs/dataset_configs/kitti_dataset.yaml as True. The second choice is that you can create the infos and gt database again and leave the config unchanged.
 
 ```
-OpenPCDet
+CRB-active-3Ddet
 ├── data
 │   ├── kitti
 │   │   │── ImageSets
@@ -86,7 +86,7 @@ python -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos tools/cfgs/datas
 * Please download the official [NuScenes 3D object detection dataset](https://www.nuscenes.org/download) and 
 organize the downloaded files as follows: 
 ```
-OpenPCDet
+CRB-active-3Ddet
 ├── data
 │   ├── nuscenes
 │   │   │── v1.0-trainval (or v1.0-mini if you use mini)
@@ -116,7 +116,7 @@ including the training data `training_0000.tar~training_0031.tar` and the valida
 data `validation_0000.tar~validation_0007.tar`.
 * Unzip all the above `xxxx.tar` files to the directory of `data/waymo/raw_data` as follows (You could get 798 *train* tfrecord and 202 *val* tfrecord ):  
 ```
-OpenPCDet
+CRB-active-3Ddet
 ├── data
 │   ├── waymo
 │   │   │── ImageSets
@@ -155,7 +155,7 @@ Note that you do not need to install `waymo-open-dataset` if you have already pr
 * Please download the official [Lyft Level5 perception dataset](https://level-5.global/data/perception) and 
 organize the downloaded files as follows: 
 ```
-OpenPCDet
+CRB-active-3Ddet
 ├── data
 │   ├── lyft
 │   │   │── ImageSets
