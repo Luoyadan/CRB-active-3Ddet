@@ -44,27 +44,11 @@ All the codes are tested in the following environment:
 
 ### Install `pcdet v0.5`
 NOTE: Please re-install `pcdet v0.5` by running `python setup.py develop` even if you have already installed previous version.
-
-
-Install the dependent libraries as follows:
-
-[comment]: <> (* Install the dependent python libraries: )
-
-[comment]: <> (```)
-
-[comment]: <> (pip install -r requirements.txt )
-
-[comment]: <> (```)
-
-* Install the SparseConv library, we use the implementation from [`[spconv]`](https://github.com/traveller59/spconv). 
-    * You need to install latest `spconv v2.x` with pip, see the official documents of [spconv](https://github.com/traveller59/spconv).
   
-c. Install this `pcdet` library and its dependent libraries by running the following command:
+Install this `pcdet` library and its dependent libraries by running the following command:
 ```shell
 python setup.py develop
 ```
-
-
 
 # Getting Started
 The dataset configs are located within [tools/cfgs/dataset_configs](../tools/cfgs/dataset_configs), 
