@@ -37,7 +37,10 @@ To alleviate the high annotation cost in LiDAR-based 3D object detection, active
 
 ## Requirements
 - Python 3.6
-- Pytorch 1.3
+- Pytorch 1.10.1
+- cuda 11.3
+- [spconv 2.x](https://github.com/traveller59/spconv)
+- [pcdet v0.5](https://github.com/open-mmlab/OpenPCDet/blob/master/docs/INSTALL.md)
 
 
 ### Datasets
