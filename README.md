@@ -45,12 +45,8 @@ All the codes are tested in the following environment:
 ### Install `pcdet v0.5`
 NOTE: Please re-install `pcdet v0.5` by running `python setup.py develop` even if you have already installed previous version.
 
-a. Clone this repository.
-```shell
-git clone https://github.com/open-mmlab/OpenPCDet.git
-```
 
-b. Install the dependent libraries as follows:
+Install the dependent libraries as follows:
 
 [comment]: <> (* Install the dependent python libraries: )
 
