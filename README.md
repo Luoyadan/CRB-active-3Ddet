@@ -35,28 +35,6 @@ To alleviate the high annotation cost in LiDAR-based 3D object detection, active
 <!-- * [Citation](#citation)
 * [Contact](#contact) -->
 
-
-### Training
-The general command for training is,
-```
-python3 train.py
-```
-Change arguments for different experiments:
-- dataset: "home" / "visda" / "visda18"
-- batch_size: mini_batch size
-- beta: The ratio of known target sample and Unk target sample in the pseudo label set
-- EF : Enlarging Factor α
-- num_layers: GNN's depth
-- adv_coeff: adversarial loss coefficient γ
-- node_loss: node classification loss μ
-For the detailed hyper-parameters setting for each dataset, please refer to Section 5.2 and Appendix 3.  
-
-Remember to change dataset_root to suit your own case
-
-The training loss and validation accuracy will be automatically saved in './logs/', which can be visualized with tensorboard.
-The model weights will be saved in './checkpoints'
-
-
 # Installation
 
 ### Requirements
