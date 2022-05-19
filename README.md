@@ -23,7 +23,7 @@ To alleviate the high annotation cost in LiDAR-based 3D object detection, active
 ## Contents
 * [Installation](#Installation)
   * [Requirements](#Requirements)
-  * [pcdet v0.5](#Install `pcdet v0.5`)
+  * [pcdet v0.5](#Install-`pcdet-v0.5`)
 * [Getting Started](#Getting Started)
   * [Requirements](#Requirements)
   * [KITTI Dataset](#KITTI Dataset)
