@@ -51,8 +51,8 @@ python setup.py develop
 ```
 
 # Getting Started
-The dataset configs are located within [tools/cfgs/dataset_configs](../tools/cfgs/dataset_configs), 
-and the model configs are located within [tools/cfgs](../tools/cfgs) for different datasets. The active learning configs are located at [AL KITTI](../tools/cfgs/active-kitti_models) and [./tools/cfgs/active-waymo_models](./tools/cfgs/active-waymo_models), respectively. 
+The dataset configs are located within [tools/cfgs/dataset_configs](./tools/cfgs/dataset_configs), 
+and the model configs are located within [tools/cfgs](./tools/cfgs) for different datasets. The active learning configs are located at [tools/cfgs/active-kitti_models](./tools/cfgs/active-kitti_models) and [/tools/cfgs/active-waymo_models](./tools/cfgs/active-waymo_models), respectively. 
 
 
 ## Dataset Preparation
