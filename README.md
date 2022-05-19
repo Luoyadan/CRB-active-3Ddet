@@ -21,8 +21,9 @@ To alleviate the high annotation cost in LiDAR-based 3D object detection, active
 
 ----
 ## Contents
-* [Requirements](#requirements)
-* [Installation]
+* [Requirements]
+* [Installation](#Installation)
+  * [Requirements]
 * [Installa]
 * [Dataset Preparation](#dataset-preparation)
   * [Data structure](#data-structure)
