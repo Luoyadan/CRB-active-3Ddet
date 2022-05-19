@@ -29,7 +29,7 @@ To alleviate the high annotation cost in LiDAR-based 3D object detection, active
   * [KITTI Dataset](#KITTI-Dataset)
   * [Waymo Open Dataset](#Waymo-Open-Dataset)
   * [Lyft Dataset](#Lyft-Dataset)
-  * [Training & Testing](#Training-&-Testing)
+  * [Training & Testing](#training--testing)
 
 
 # Installation
