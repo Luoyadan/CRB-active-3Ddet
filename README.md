@@ -39,6 +39,7 @@ All the codes are tested in the following environment:
 * Python 3.6+
 * PyTorch 1.10.1
 * CUDA 11.3 
+* wandb 0.12.11
 * [`spconv-cu113 v2.1.21`](https://github.com/traveller59/spconv)
 
 
@@ -179,7 +180,7 @@ python -m pcdet.datasets.lyft.lyft_dataset --func create_lyft_infos \
 * You need to check carefully since we don't provide a benchmark for it.
 
 
-## Pretrained Models
+<!-- ## Pretrained Models
 If you would like to train [CaDDN](../tools/cfgs/kitti_models/CaDDN.yaml), download the pretrained [DeepLabV3 model](https://download.pytorch.org/models/deeplabv3_resnet101_coco-586e9e4e.pth) and place within the `checkpoints` directory. Please make sure the [kornia](https://github.com/kornia/kornia) is installed since it is needed for `CaDDN`.
 ```
 OpenPCDet
@@ -188,7 +189,7 @@ OpenPCDet
 ├── data
 ├── pcdet
 ├── tools
-```
+``` -->
 
 ## Training & Testing
 
