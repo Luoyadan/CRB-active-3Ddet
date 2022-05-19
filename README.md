@@ -23,12 +23,12 @@ To alleviate the high annotation cost in LiDAR-based 3D object detection, active
 ## Contents
 * [Installation](#Installation)
   * [Requirements](#Requirements)
-  * [pcdet v0.5] Install `pcdet v0.5`
-* [Getting Started]
+  * [pcdet v0.5](#Install `pcdet v0.5`)
+* [Getting Started](#Getting Started)
   * [Requirements](#Requirements)
-  * [KITTI Dataset]
-  * [Waymo Open Dataset]
-  * [Lyft Dataset]
+  * [KITTI Dataset](#KITTI Dataset)
+  * [Waymo Open Dataset](#Waymo Open Dataset)
+  * [Lyft Dataset](#Lyft Dataset)
   * 
 
 
