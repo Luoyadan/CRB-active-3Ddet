@@ -44,12 +44,13 @@ All the codes are tested in the following environment:
 
 
 ### Install `pcdet v0.5`
-NOTE: Please re-install `pcdet v0.5` by running `python setup.py develop` even if you have already installed previous version.
-  
-Install this `pcdet` library and its dependent libraries by running the following command:
+Our implementations of 3D detectors are based on the lastest [`OpenPCDet`](https://github.com/open-mmlab/OpenPCDet). To install this `pcdet` library and its dependent libraries, please run the following command:
+
 ```shell
 python setup.py develop
 ```
+> NOTE: Please re-install even if you have already installed pcdet previoursly.
+
 
 # Getting Started
 The **active learning configs** are located at [tools/cfgs/active-kitti_models](./tools/cfgs/active-kitti_models) and [/tools/cfgs/active-waymo_models](./tools/cfgs/active-waymo_models) for different AL methods. The dataset configs are located within [tools/cfgs/dataset_configs](./tools/cfgs/dataset_configs), 
@@ -57,8 +58,7 @@ and the model configs are located within [tools/cfgs](./tools/cfgs) for differen
 
 
 ## Dataset Preparation
-
-Currently we provide the dataloader of KITTI dataset and NuScenes dataset, and the supporting of more datasets are on the way.  
+Currently we provide the dataloader of KITTI dataset and Waymo dataset, and the supporting of more datasets are on the way.  
 
 ### KITTI Dataset
 * Please download the official [KITTI 3D object detection](http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d) dataset and organize the downloaded files as follows (the road planes could be downloaded from [[road plane]](https://drive.google.com/file/d/1d5mq0RXRnvHPVeKx6Q612z0YRO1t2wAp/view?usp=sharing), which are optional for data augmentation in the training):
@@ -83,7 +83,7 @@ CRB-active-3Ddet
 python -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos tools/cfgs/dataset_configs/kitti_dataset.yaml
 ```
 
-### NuScenes Dataset
+<!-- ### NuScenes Dataset
 * Please download the official [NuScenes 3D object detection dataset](https://www.nuscenes.org/download) and 
 organize the downloaded files as follows: 
 ```
@@ -109,7 +109,7 @@ pip install nuscenes-devkit==1.0.5
 python -m pcdet.datasets.nuscenes.nuscenes_dataset --func create_nuscenes_infos \
     --cfg_file tools/cfgs/dataset_configs/nuscenes_dataset.yaml \
     --version v1.0-trainval
-```
+``` -->
 
 ### Waymo Open Dataset
 * Please download the official [Waymo Open Dataset](https://waymo.com/open/download/), 
@@ -151,7 +151,7 @@ python -m pcdet.datasets.waymo.waymo_dataset --func create_waymo_infos \
 
 Note that you do not need to install `waymo-open-dataset` if you have already processed the data before and do not need to evaluate with official Waymo Metrics. 
 
-
+<!-- 
 ### Lyft Dataset
 * Please download the official [Lyft Level5 perception dataset](https://level-5.global/data/perception) and 
 organize the downloaded files as follows: 
@@ -177,24 +177,17 @@ python -m pcdet.datasets.lyft.lyft_dataset --func create_lyft_infos \
     --cfg_file tools/cfgs/dataset_configs/lyft_dataset.yaml
 ```
 
-* You need to check carefully since we don't provide a benchmark for it.
+* You need to check carefully since we don't provide a benchmark for it. -->
 
 
-<!-- ## Pretrained Models
-If you would like to train [CaDDN](../tools/cfgs/kitti_models/CaDDN.yaml), download the pretrained [DeepLabV3 model](https://download.pytorch.org/models/deeplabv3_resnet101_coco-586e9e4e.pth) and place within the `checkpoints` directory. Please make sure the [kornia](https://github.com/kornia/kornia) is installed since it is needed for `CaDDN`.
-```
-OpenPCDet
-├── checkpoints
-│   ├── deeplabv3_resnet101_coco-586e9e4e.pth
-├── data
-├── pcdet
-├── tools
-``` -->
+
 
 ## Training & Testing
 
 
 ### Test and evaluate the pretrained models
+The weights of our pre-trained model will be released upon acceptance.
+
 * Test with a pretrained model: 
 ```shell script
 python test.py --cfg_file ${CONFIG_FILE} --batch_size ${BATCH_SIZE} --ckpt ${CKPT}
@@ -216,12 +209,30 @@ sh scripts/slurm_test_mgpu.sh ${PARTITION} ${NUM_GPUS} \
     --cfg_file ${CONFIG_FILE} --batch_size ${BATCH_SIZE}
 ```
 
+### Train a backbone
+In our active learning setting, the 3D detector will be pre-trained with a small labeled set $\mathcal{D}_L$ which is randomly sampled from the trainig set. To train such a backbone, please run
 
-### Train a model
+```shell script
+sh scripts/${DATASET}/train_${DATASET}_backbone.sh
+```
+
+
+### Train with different active learning strategies
+We provide several options for active learning algorithms, including
+- random selection [`random`]
+- confidence sample [`confidence`]
+- entropy sampling [`entropy`]
+- MC-Reg sampling [`montecarlo`]
+- greedy coreset [`coreset`]
+- learning loss [`llal`]
+- BADGE sampling [`badge`]
+- CRB sampling [`crb`]
+
+
 You could optionally add extra command line parameters `--batch_size ${BATCH_SIZE}` and `--epochs ${EPOCHS}` to specify your preferred parameters. 
   
 
-* Train with multiple GPUs or multiple machines
+* Train with multiple GPUs 
 ```shell script
 sh scripts/dist_train.sh ${NUM_GPUS} --cfg_file ${CONFIG_FILE}
 
