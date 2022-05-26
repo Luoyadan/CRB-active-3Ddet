@@ -142,6 +142,8 @@ pip3 install --upgrade pip
 pip3 install waymo-open-dataset-tf-2-5-0 --user
 ```
 
+> Waymo version is 1.2
+
 * Extract point cloud data from tfrecord and generate data infos by running the following command (it takes several hours, 
 and you could refer to `data/waymo/waymo_processed_data_v0_5_0` to see how many records that have been processed): 
 ```python 
@@ -230,18 +232,11 @@ We provide several options for active learning algorithms, including
 
 
 You could optionally add extra command line parameters `--batch_size ${BATCH_SIZE}` and `--epochs ${EPOCHS}` to specify your preferred parameters. 
-  
-
-* Train with multiple GPUs 
-```shell script
-sh scripts/dist_train.sh ${NUM_GPUS} --cfg_file ${CONFIG_FILE}
-
-# or 
 
 sh scripts/slurm_train.sh ${PARTITION} ${JOB_NAME} ${NUM_GPUS} --cfg_file ${CONFIG_FILE}
 ```
 
-* Train with a single GPU:
+* Train:
 ```shell script
 python train.py --cfg_file ${CONFIG_FILE}
 ```
