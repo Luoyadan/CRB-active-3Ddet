@@ -138,11 +138,9 @@ CRB-active-3Ddet
 * Install the official `waymo-open-dataset` by running the following command: 
 ```shell script
 pip3 install --upgrade pip
-# tf 2.0.0
-pip3 install waymo-open-dataset-tf-2-5-0 --user
+pip3 install waymo-open-dataset-tf-2-0-0==1.2.0 --user
 ```
-
-> Waymo version is 1.2
+> Waymo version in our project is 1.2
 
 * Extract point cloud data from tfrecord and generate data infos by running the following command (it takes several hours, 
 and you could refer to `data/waymo/waymo_processed_data_v0_5_0` to see how many records that have been processed): 
