@@ -12,6 +12,7 @@
 
 This work is the official Pytorch implementation of our ICLR publication: **Exploring Active 3D Object Detection from a Generalization Perspective**.
 
+[[OpenReview]](https://openreview.net/forum?id=2RwXVje1rAh) [[arXiv]](https://arxiv.org/abs/2301.09249) [[Supplementary Material]](https://openreview.net/attachment?id=2RwXVje1rAh&name=supplementary_material)
 
 :fire: 02/23 updates: checkpoints available at https://drive.google.com/drive/folders/1PMb6tu84AIw66vCRrMBCHpnBeL5WMkuv?usp=sharing
 ## Framework
