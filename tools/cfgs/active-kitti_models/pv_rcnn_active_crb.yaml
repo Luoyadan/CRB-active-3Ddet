@@ -246,7 +246,7 @@ OPTIMIZATION:
     GRAD_NORM_CLIP: 10
 
 ACTIVE_TRAIN:
-    METHOD: greedy_boxbadge
+    METHOD: crb
     AGGREGATION: mean
 
     PRE_TRAIN_SAMPLE_NUMS: 100  
