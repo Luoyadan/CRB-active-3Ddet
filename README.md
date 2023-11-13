@@ -231,7 +231,7 @@ We provide several options for active learning algorithms, including
 - Cider sampling [`cider`]
 - Open-CRN sampling [`open-crb`]
 
-For PROB, you need to an seperately pretrained model with additional heads, refer to `cfgs/owal-3d_nuscenes_models_prob/*`.
+For PROB, you need an seperately pretrained model with additional heads, refer to `cfgs/owal-3d_nuscenes_models_prob/*`.
 
 You could optionally add extra command line parameters `--batch_size ${BATCH_SIZE}` and `--epochs ${EPOCHS}` to specify your preferred parameters. 
 
