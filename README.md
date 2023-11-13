@@ -7,21 +7,14 @@
 -----------------------
 
 
+This branch is the official Pytorch implementation of our work **Open-CRB: Towards Open World Active Learning for 3D Object Detection**.
 
+[[Open-CRB Branch]](https://github.com/Luoyadan/CRB-active-3Ddet/tree/Open-CRB) [[arXiv]](https://arxiv.org/abs/2310.10391) 
 
+:fire: 11/23 updates: release the code and the preprint of **Open-CRB**
 
-This work is the official Pytorch implementation of our ICLR publication: **Exploring Active 3D Object Detection from a Generalization Perspective**.
-
-[[OpenReview]](https://openreview.net/forum?id=2RwXVje1rAh) [[arXiv]](https://arxiv.org/abs/2301.09249) [[Supplementary Material]](https://openreview.net/attachment?id=2RwXVje1rAh&name=supplementary_material)
-
-CRB is extended to the open world senarios Open-CRB: **Towards Open World Active Learning for 3D Object Detection**
-
-[[arXiv]](https://arxiv.org/abs/2310.10391) 
-
-:fire: 11/23 updates: the code and preprints of Open-CRB are available now. 
-:fire: 02/23 updates: checkpoints available at https://drive.google.com/drive/folders/1PMb6tu84AIw66vCRrMBCHpnBeL5WMkuv?usp=sharing
 ## Framework
-To alleviate the high annotation cost in LiDAR-based 3D object detection, active learning is a promising solution that learns to select only a small portion of unlabeled data to annotate, without compromising model performance. Our empirical study, however, suggests that mainstream uncertainty-based and diversity-based active learning policies are not effective when applied in the 3D detection task, as they fail to balance the trade-off between point cloud informativeness and box-level annotation costs. To overcome this limitation, we jointly investigate three novel criteria in our framework **CRB** for point cloud acquisition - label conciseness, feature representativeness and geometric balance, which hierarchically filters out the point clouds of redundant 3D bounding box labels, latent features and geometric characteristics (e.g., point cloud density) from the unlabeled sample pool and greedily selects informative ones with fewer objects to annotate. Our theoretical analysis demonstrates that the proposed criteria aligns the marginal distributions of the selected subset and the prior distributions of the unseen test set, and minimizes the upper bound of the generalization error. To validate the effectiveness and applicability of CRB, we conduct extensive experiments on the two benchmark 3D object detection datasets of KITTI and Waymo and examine both one-stage (i.e., SECOND) and two-stage 3D detectors (i.e., PV-RCNN). Experiments evidence that the proposed approach outperforms existing active learning strategies and achieves fully supervised performance requiring 1\% and 8\% annotations of bounding boxes and point clouds, respectively.
+Significant strides have been made in closed-world 3D object detection, testing systems in environments with known classes. However, the challenge arises in open world scenarios where new object classes appear. Existing efforts sequentially learn novel classes from streams of labeled data at a significant annotation cost, impeding efficient deployment to the wild. To seek effective solutions, we investigate a more practical yet challenging research task: Open World Active Learning for 3D Object Detection (OWAL-3D), aiming at selecting a small number of 3D boxes to annotate while maximizing detection performance on both known and unknown classes. The core difficulty centers on striking a balance between mining more unknown instances and minimizing the labeling expenses of point clouds. Empirically, our study finds the harmonious and inverse relationship between box quantities and their confidences can help alleviate the dilemma, avoiding the repeated selection of common known instances and focusing on uncertain objects that are potentially unknown. We unify both relational constraints into a simple and effective AL strategy namely Open-CRB, which guides to acquisition of informative point clouds with the least amount of boxes to label. Furthermore, we develop a comprehensive codebase for easy reproducing and future research, supporting 15 baseline methods (\textit{i.e.}, active learning, out-of-distribution detection and open world detection), 2 types of modern 3D detectors (\textit{i.e.}, one-stage SECOND and two-stage PV-RCNN) and 3 benchmark 3D datasets (\textit{i.e.}, KITTI, nuScenes and Waymo). Extensive experiments evidence that the proposed Open-CRB demonstrates superiority and ﬂexibility in recognizing both novel and shared categories with very limited labeling costs, compared to state-of-the-art baselines. 
 
 <p align="center">
 <img src="miscellaneous/OLC.png" width="80%">
@@ -223,25 +216,26 @@ sh scripts/slurm_test_mgpu.sh ${PARTITION} ${NUM_GPUS} \
 In our active learning setting, the 3D detector will be pre-trained with a small labeled set $\mathcal{D}_L$ which is randomly sampled from the trainig set. To train such a backbone, please run
 
 ```shell script
-sh scripts/${DATASET}/train_${DATASET}_backbone.sh
+sh scripts/pretrain_for_open-crb.sh
 ```
 
 
 ### Train with different active learning strategies
 We provide several options for active learning algorithms, including
 - random selection [`random`]
-- confidence sample [`confidence`]
 - entropy sampling [`entropy`]
-- MC-Reg sampling [`montecarlo`]
+- MC-Reg sampling [`mc`]
 - greedy coreset [`coreset`]
-- learning loss [`llal`]
-- BADGE sampling [`badge`]
-- CRB sampling [`crb`]
+- ReAct sampling [`react`]
+- GradNorm sampling [`gradnorm`]
+- Cider sampling [`cider`]
+- Open-CRN sampling [`open-crb`]
 
+For PROB, you need to an seperately pretrained model with additional heads, refer to `cfgs/owal-3d_nuscenes_models_prob/*`.
 
 You could optionally add extra command line parameters `--batch_size ${BATCH_SIZE}` and `--epochs ${EPOCHS}` to specify your preferred parameters. 
 
 * Train:
 ```shell script
-python train.py --cfg_file ${CONFIG_FILE}
+sh scripts/train_and_test_open-crb.sh
 ```
