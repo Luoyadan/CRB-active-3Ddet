@@ -285,23 +285,21 @@ OPTIMIZATION:
     GRAD_NORM_CLIP: 10
 
 ACTIVE_TRAIN:
-    METHOD: open-crb
+    METHOD: random
     AGGREGATION: mean
 
     PRE_TRAIN_SAMPLE_NUMS: 3000
     PRE_TRAIN_EPOCH_NUMS: 40
-    TRAIN_RESUME: True
+    TRAIN_RESUME: False
 
     SELECT_NUMS: 1500
     SELECT_LABEL_EPOCH_INTERVAL: 40
 
     TOTAL_BUDGET_NUMS: 6000
 
-    ENABLE_S3: False
-
     ACTIVE_CONFIG:
-      K1: 2
-      K2: 1.5
+      K1: 5
+      K2: 3
       BANDWIDTH: 5
       CLUSTERING: kmeans++
 
