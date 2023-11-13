@@ -7,14 +7,20 @@
 -----------------------
 
 
+This repository is the official Pytorch implementation of our work:
 
-
-
-This work is the official Pytorch implementation of our ICLR publication: **Exploring Active 3D Object Detection from a Generalization Perspective**.
+\[ICLR 2023\] **CRB: Exploring Active 3D Object Detection from a Generalization Perspective**. 
 
 [[OpenReview]](https://openreview.net/forum?id=2RwXVje1rAh) [[arXiv]](https://arxiv.org/abs/2301.09249) [[Supplementary Material]](https://openreview.net/attachment?id=2RwXVje1rAh&name=supplementary_material)
 
+\[In Submission\] **Open-CRB: Towards Open World Active Learning for 3D Object Detection**.
+
+[[Open-CRB Branch]](https://github.com/Luoyadan/CRB-active-3Ddet/tree/Open-CRB) [[arXiv]](https://arxiv.org/abs/2310.10391) 
+
+:fire: 11/23 updates: release the code and the preprint of **Open-CRB**
+
 :fire: 02/23 updates: checkpoints available at https://drive.google.com/drive/folders/1PMb6tu84AIw66vCRrMBCHpnBeL5WMkuv?usp=sharing
+
 ## Framework
 To alleviate the high annotation cost in LiDAR-based 3D object detection, active learning is a promising solution that learns to select only a small portion of unlabeled data to annotate, without compromising model performance. Our empirical study, however, suggests that mainstream uncertainty-based and diversity-based active learning policies are not effective when applied in the 3D detection task, as they fail to balance the trade-off between point cloud informativeness and box-level annotation costs. To overcome this limitation, we jointly investigate three novel criteria in our framework **CRB** for point cloud acquisition - label conciseness, feature representativeness and geometric balance, which hierarchically filters out the point clouds of redundant 3D bounding box labels, latent features and geometric characteristics (e.g., point cloud density) from the unlabeled sample pool and greedily selects informative ones with fewer objects to annotate. Our theoretical analysis demonstrates that the proposed criteria aligns the marginal distributions of the selected subset and the prior distributions of the unseen test set, and minimizes the upper bound of the generalization error. To validate the effectiveness and applicability of CRB, we conduct extensive experiments on the two benchmark 3D object detection datasets of KITTI and Waymo and examine both one-stage (i.e., SECOND) and two-stage 3D detectors (i.e., PV-RCNN). Experiments evidence that the proposed approach outperforms existing active learning strategies and achieves fully supervised performance requiring 1\% and 8\% annotations of bounding boxes and point clouds, respectively.
 
